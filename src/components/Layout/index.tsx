@@ -1,5 +1,6 @@
 import { Poppins, Merriweather } from 'next/font/google'
 import { ReactNode } from 'react'
+import { Header } from '../Header'
 import styles from './styles.module.scss'
 
 const poppins = Poppins({
@@ -20,7 +21,10 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <main className={`${poppins.className} ${merriweather.variable}`}>
-      <div className={styles.container}>{children}</div>
+      <div className={styles.container}>
+        <Header />
+        {children}
+      </div>
     </main>
   )
 }
