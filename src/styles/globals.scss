@@ -42,3 +42,17 @@ main {
   align-items: center;
   justify-content: center;
 }
+
+/* UTILS */
+.step-title {
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+
+.step-description {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}

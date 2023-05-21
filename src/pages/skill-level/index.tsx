@@ -1,17 +1,17 @@
 import { Card } from '@/components/Card'
 import { MultiStep } from '@/components/MultiStep'
 
-export default function Home() {
+export default function SkillLevel() {
   return (
     <Card>
       <Card.Header>
-        <MultiStep currentStep={1} />
+        <MultiStep currentStep={2} />
       </Card.Header>
 
       <Card.Body>
-        <h2 className="step-title">Personal Information</h2>
+        <h2 className="step-title">Skill Level</h2>
         <p className="step-description">
-          Please provide your personal details so we can get to know you better.
+          Please tell us about your skill level in frontend development.
         </p>
       </Card.Body>
 
