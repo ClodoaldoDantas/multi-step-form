@@ -1,14 +1,18 @@
 import { ReactNode } from 'react'
-import cx from 'classnames'
 import styles from './styles.module.scss'
 
 interface CardFooterProps {
-  className?: string
+  justify?: 'flex-end' | 'space-between'
   children: ReactNode
 }
 
-export function CardFooter({ className, children }: CardFooterProps) {
+export function CardFooter({
+  children,
+  justify = 'space-between',
+}: CardFooterProps) {
   return (
-    <footer className={cx(styles.cardFooter, className)}>{children}</footer>
+    <footer style={{ justifyContent: justify }} className={styles.cardFooter}>
+      {children}
+    </footer>
   )
 }

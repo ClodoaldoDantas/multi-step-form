@@ -1,3 +1,4 @@
+import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { MultiStep } from '@/components/MultiStep'
 
@@ -15,7 +16,9 @@ export default function Home() {
         </p>
       </Card.Body>
 
-      <Card.Footer>card footer</Card.Footer>
+      <Card.Footer justify="flex-end">
+        <Button>Next Step</Button>
+      </Card.Footer>
     </Card>
   )
 }

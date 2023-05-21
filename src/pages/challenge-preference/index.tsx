@@ -1,3 +1,4 @@
+import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { MultiStep } from '@/components/MultiStep'
 
@@ -16,7 +17,11 @@ export default function ChallengePreference() {
         </p>
       </Card.Body>
 
-      <Card.Footer>card footer</Card.Footer>
+      <Card.Footer>
+        <Button variant="secondary">Go Back</Button>
+
+        <Button>Next Step</Button>
+      </Card.Footer>
     </Card>
   )
 }

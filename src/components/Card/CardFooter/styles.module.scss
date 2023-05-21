@@ -1,4 +1,7 @@
 .cardFooter {
   padding-top: 2rem;
   border-top: 1px solid var(--shape);
+
+  display: flex;
+  align-items: center;
 }
