@@ -1,0 +1,42 @@
+.levelButton {
+  height: 4.375rem;
+  width: 100%;
+  padding: 0 1.125rem;
+
+  background-color: transparent;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  transition: border-color 200ms;
+
+  &.active,
+  &:hover {
+    border-color: var(--primary);
+  }
+}
+
+.levelButtonTitle {
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-transform: capitalize;
+}
+
+.levelButtonIconWrapper {
+  height: 2.25rem;
+  width: 2.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--primary);
+  border-radius: 50%;
+}
+
+.levelButtonIcon {
+  color: var(--white);
+}

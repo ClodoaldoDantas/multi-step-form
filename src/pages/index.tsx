@@ -64,7 +64,7 @@ export default function Home() {
               />
 
               {errors.name && (
-                <span className={styles.error}>{errors.name.message}</span>
+                <span className="error">{errors.name.message}</span>
               )}
             </div>
 
@@ -82,7 +82,7 @@ export default function Home() {
               />
 
               {errors.email && (
-                <span className={styles.error}>{errors.email.message}</span>
+                <span className="error">{errors.email.message}</span>
               )}
             </div>
 
@@ -100,7 +100,7 @@ export default function Home() {
               />
 
               {errors.phone && (
-                <span className={styles.error}>{errors.phone.message}</span>
+                <span className="error">{errors.phone.message}</span>
               )}
             </div>
 
@@ -118,7 +118,7 @@ export default function Home() {
               />
 
               {errors.link && (
-                <span className={styles.error}>{errors.link.message}</span>
+                <span className="error">{errors.link.message}</span>
               )}
             </div>
           </div>
