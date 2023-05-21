@@ -1,0 +1,35 @@
+.formGrid {
+  margin-top: 1.5rem;
+
+  display: grid;
+  gap: 1.5rem 2.5rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.formLabel {
+  display: block;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+
+.formField {
+  width: 100%;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: 0;
+
+  font-size: 1rem;
+  color: var(--text-dark);
+
+  &::placeholder {
+    color: var(--text-placeholder);
+  }
+
+  &:focus {
+    border-color: var(--primary);
+  }
+}
