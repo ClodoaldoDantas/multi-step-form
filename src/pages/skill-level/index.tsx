@@ -7,8 +7,6 @@ import { Card } from '@/components/Card'
 import { LevelButton } from '@/components/LevelButton'
 import { MultiStep } from '@/components/MultiStep'
 
-import styles from '@/styles/Skill.module.scss'
-
 const levels = {
   beginner: Leaf,
   intermediate: Compass,
@@ -41,6 +39,7 @@ export default function SkillLevel() {
     setTouched(true)
 
     if (selectedLevel) {
+      /* TODO: save skill level in store */
       router.push('/challenge-preference')
     }
   }
@@ -61,7 +60,7 @@ export default function SkillLevel() {
 
         {isError && <span className="error">Please, choose a skill level</span>}
 
-        <div className={styles.grid}>
+        <div className="grid-two-columns">
           {Object.entries(levels).map(([level, icon]) => (
             <LevelButton
               key={level}

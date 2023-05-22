@@ -1,5 +1,6 @@
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
+import { Checkbox } from '@/components/Checkbox'
 import { MultiStep } from '@/components/MultiStep'
 
 export default function ChallengePreference() {
@@ -15,6 +16,10 @@ export default function ChallengePreference() {
           Please tell us which frontend challenges you would like to participate
           in.
         </p>
+
+        <div className="grid-two-columns">
+          <Checkbox />
+        </div>
       </Card.Body>
 
       <Card.Footer>

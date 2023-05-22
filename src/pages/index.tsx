@@ -1,12 +1,13 @@
+import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/router'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { MultiStep } from '@/components/MultiStep'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
 
 import styles from '@/styles/Home.module.scss'
-import { useForm } from 'react-hook-form'
-import { useRouter } from 'next/router'
 
 const personalFormSchema = z.object({
   name: z.string().nonempty('Name is required'),
@@ -49,7 +50,7 @@ export default function Home() {
             better.
           </p>
 
-          <div className={styles.formGrid}>
+          <div className="grid-two-columns">
             <div className={styles.formGroup}>
               <label className={styles.formLabel} htmlFor="name">
                 Full Name
