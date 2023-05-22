@@ -31,7 +31,7 @@ export default function Home() {
 
   async function handleRegister(data: PersonalFormData) {
     /* TODO: save data in store */
-    console.log(data)
+    console.log('personal', data)
 
     router.push('/skill-level')
   }

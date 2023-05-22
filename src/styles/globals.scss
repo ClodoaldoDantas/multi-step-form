@@ -57,7 +57,6 @@ main {
 .step-description {
   font-size: 0.875rem;
   line-height: 1.25rem;
-  margin-bottom: 1.5rem;
 }
 
 .error {
@@ -66,6 +65,7 @@ main {
 }
 
 .grid-two-columns {
+  margin-top: 1.5rem;
   display: grid;
   gap: 1.5rem 2.5rem;
   grid-template-columns: repeat(2, 1fr);

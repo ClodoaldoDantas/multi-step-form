@@ -23,7 +23,7 @@ export default function SkillLevel() {
   const router = useRouter()
 
   function handleBack() {
-    router.push('/')
+    router.replace('/')
   }
 
   function handleSelect(level: Level) {
@@ -40,6 +40,7 @@ export default function SkillLevel() {
 
     if (selectedLevel) {
       /* TODO: save skill level in store */
+      console.log('level', selectedLevel)
       router.push('/challenge-preference')
     }
   }
