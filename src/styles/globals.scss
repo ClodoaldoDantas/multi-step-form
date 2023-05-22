@@ -64,9 +64,18 @@ main {
   color: var(--text-error);
 }
 
-.grid-two-columns {
+.grid-two-columns,
+.grid-three-columns {
   margin-top: 1.5rem;
   display: grid;
+}
+
+.grid-two-columns {
   gap: 1.5rem 2.5rem;
   grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-three-columns {
+  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
 }
