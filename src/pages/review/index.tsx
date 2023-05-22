@@ -1,6 +1,7 @@
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { MultiStep } from '@/components/MultiStep'
+import { BackButton } from '@/components/BackButton'
 
 export default function Review() {
   return (
@@ -17,8 +18,7 @@ export default function Review() {
       </Card.Body>
 
       <Card.Footer>
-        <Button variant="secondary">Go Back</Button>
-
+        <BackButton />
         <Button>Next Step</Button>
       </Card.Footer>
     </Card>

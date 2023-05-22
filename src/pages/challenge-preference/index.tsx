@@ -1,9 +1,10 @@
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Checkbox } from '@/components/Checkbox'
 import { MultiStep } from '@/components/MultiStep'
-import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { BackButton } from '@/components/BackButton'
 
 const challenges = [
   { id: 'html-css-js', label: 'HTML/CSS/JS' },
@@ -19,10 +20,6 @@ export default function ChallengePreference() {
   )
 
   const [touched, setTouched] = useState(false)
-
-  function handleBack() {
-    router.push('/skill-level')
-  }
 
   function handleChange(checked: boolean, value: string) {
     if (checked) {
@@ -78,10 +75,7 @@ export default function ChallengePreference() {
       </Card.Body>
 
       <Card.Footer>
-        <Button onClick={handleBack} variant="secondary">
-          Go Back
-        </Button>
-
+        <BackButton />
         <Button onClick={handleRegisterPreferences}>Next Step</Button>
       </Card.Footer>
     </Card>

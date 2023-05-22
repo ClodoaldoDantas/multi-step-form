@@ -6,6 +6,7 @@ import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { LevelButton } from '@/components/LevelButton'
 import { MultiStep } from '@/components/MultiStep'
+import { BackButton } from '@/components/BackButton'
 
 const levels = {
   beginner: Leaf,
@@ -21,10 +22,6 @@ export default function SkillLevel() {
   const [touched, setTouched] = useState(false)
 
   const router = useRouter()
-
-  function handleBack() {
-    router.replace('/')
-  }
 
   function handleSelect(level: Level) {
     if (level === selectedLevel) {
@@ -75,10 +72,7 @@ export default function SkillLevel() {
       </Card.Body>
 
       <Card.Footer>
-        <Button onClick={handleBack} variant="secondary">
-          Go Back
-        </Button>
-
+        <BackButton />
         <Button onClick={handleRegisterLevel}>Next Step</Button>
       </Card.Footer>
     </Card>
