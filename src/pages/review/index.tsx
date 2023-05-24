@@ -1,18 +1,39 @@
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { collection, addDoc } from 'firebase/firestore'
+
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { MultiStep } from '@/components/MultiStep'
 import { BackButton } from '@/components/BackButton'
 import { InfoCard } from '@/components/InfoCard'
+
 import { useStore } from '@/store'
 import { getChallengesLabels } from '@/utils/challenges'
 import { capitalizeFirstLetter } from '@/utils/capitalize-first-letter'
+import { db } from '@/lib/firebase'
 
 export default function Review() {
   const { personal, level, preferences } = useStore()
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
-  function handleSaveData() {
-    /* TODO: send data to api  */
-    console.log({ personal, level, preferences })
+  async function handleSaveData() {
+    setIsLoading(true)
+
+    try {
+      await addDoc(collection(db, 'developers'), {
+        personal,
+        level,
+        preferences,
+      })
+
+      router.push('/congratulations')
+    } catch (err) {
+      console.log('Something went wrong', err)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const formattedLevel = level ? capitalizeFirstLetter(level) : '-'
@@ -53,9 +74,14 @@ export default function Review() {
 
       <Card.Footer>
         <BackButton />
-        <Button disabled={buttonIsDisabled} onClick={handleSaveData}>
-          Next Step
-        </Button>
+
+        {isLoading ? (
+          <Button disabled>Sending data</Button>
+        ) : (
+          <Button disabled={buttonIsDisabled} onClick={handleSaveData}>
+            Next Step
+          </Button>
+        )}
       </Card.Footer>
     </Card>
   )
