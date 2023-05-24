@@ -3,11 +3,22 @@ import { Card } from '@/components/Card'
 import { MultiStep } from '@/components/MultiStep'
 import { BackButton } from '@/components/BackButton'
 import { InfoCard } from '@/components/InfoCard'
+import { useStore } from '@/store'
+import { getChallengesLabels } from '@/utils/challenges'
+import { capitalizeFirstLetter } from '@/utils/capitalize-first-letter'
 
 export default function Review() {
+  const { personal, level, preferences } = useStore()
+
   function handleSaveData() {
     /* TODO: send data to api  */
+    console.log({ personal, level, preferences })
   }
+
+  const formattedLevel = level ? capitalizeFirstLetter(level) : '-'
+  const formattedPreferences = getChallengesLabels(preferences)
+
+  const buttonIsDisabled = !personal || !level || preferences.length === 0
 
   return (
     <Card>
@@ -22,21 +33,29 @@ export default function Review() {
         </p>
 
         <div className="grid-three-columns">
-          <InfoCard title="Full Name" content="Rishi Purwar" />
-          <InfoCard title="Email Address" content="name@email.com" />
-          <InfoCard title="Phone Number" content="+91 1234567890" />
+          <InfoCard title="Full Name" content={personal?.name ?? '-'} />
+          <InfoCard title="Email Address" content={personal?.email ?? '-'} />
+          <InfoCard title="Phone Number" content={personal?.phone ?? '-'} />
+
           <InfoCard
             title="Portfolio/GitHub Link"
-            content="github.com/rishipurwar1"
+            content={personal?.link ?? '-'}
           />
-          <InfoCard title="Skill Level" content="Intermediate" />
-          <InfoCard title="Challenge Preference" content="React.Js" />
+
+          <InfoCard title="Skill Level" content={formattedLevel} />
+
+          <InfoCard
+            title="Challenge Preference"
+            content={formattedPreferences}
+          />
         </div>
       </Card.Body>
 
       <Card.Footer>
         <BackButton />
-        <Button onClick={handleSaveData}>Next Step</Button>
+        <Button disabled={buttonIsDisabled} onClick={handleSaveData}>
+          Next Step
+        </Button>
       </Card.Footer>
     </Card>
   )

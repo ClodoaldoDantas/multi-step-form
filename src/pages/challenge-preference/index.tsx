@@ -5,19 +5,15 @@ import { Card } from '@/components/Card'
 import { Checkbox } from '@/components/Checkbox'
 import { MultiStep } from '@/components/MultiStep'
 import { BackButton } from '@/components/BackButton'
-
-const challenges = [
-  { id: 'html-css-js', label: 'HTML/CSS/JS' },
-  { id: 'react', label: 'React.Js' },
-  { id: 'angular', label: 'Angular.Js' },
-  { id: 'vue', label: 'Vue.Js' },
-]
+import { useStore } from '@/store'
+import { challenges } from '@/utils/challenges'
 
 export default function ChallengePreference() {
+  const { preferences, setPreferences } = useStore()
   const router = useRouter()
-  const [challengesPreferences, setChallengesPreferences] = useState<string[]>(
-    []
-  )
+
+  const [challengesPreferences, setChallengesPreferences] =
+    useState<string[]>(preferences)
 
   const [touched, setTouched] = useState(false)
 
@@ -37,8 +33,7 @@ export default function ChallengePreference() {
     setTouched(true)
 
     if (challengesPreferences.length > 0) {
-      /* TODO: set preferences in store */
-      console.log('challenges preferences', challengesPreferences)
+      setPreferences(challengesPreferences)
       router.push('/review')
     }
   }
@@ -68,6 +63,7 @@ export default function ChallengePreference() {
               key={challenge.id}
               id={challenge.id}
               label={challenge.label}
+              checked={challengesPreferences.includes(challenge.id)}
               onChange={handleChange}
             />
           ))}

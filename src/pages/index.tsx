@@ -6,6 +6,7 @@ import { z } from 'zod'
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { MultiStep } from '@/components/MultiStep'
+import { useStore } from '@/store'
 
 import styles from '@/styles/Home.module.scss'
 
@@ -19,20 +20,25 @@ const personalFormSchema = z.object({
 type PersonalFormData = z.infer<typeof personalFormSchema>
 
 export default function Home() {
+  const { personal, setPersonal } = useStore()
+  const router = useRouter()
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<PersonalFormData>({
     resolver: zodResolver(personalFormSchema),
+    defaultValues: {
+      name: personal?.name ?? '',
+      email: personal?.email ?? '',
+      phone: personal?.phone ?? '',
+      link: personal?.link ?? '',
+    },
   })
 
-  const router = useRouter()
-
   async function handleRegister(data: PersonalFormData) {
-    /* TODO: save data in store */
-    console.log('personal', data)
-
+    setPersonal(data)
     router.push('/skill-level')
   }
 

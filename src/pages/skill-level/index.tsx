@@ -7,6 +7,7 @@ import { Card } from '@/components/Card'
 import { LevelButton } from '@/components/LevelButton'
 import { MultiStep } from '@/components/MultiStep'
 import { BackButton } from '@/components/BackButton'
+import { useStore } from '@/store'
 
 const levels = {
   beginner: Leaf,
@@ -18,7 +19,8 @@ const levels = {
 type Level = keyof typeof levels
 
 export default function SkillLevel() {
-  const [selectedLevel, setSelectedLevel] = useState<Level | null>(null)
+  const { level, setLevel } = useStore()
+  const [selectedLevel, setSelectedLevel] = useState<Level | null>(level)
   const [touched, setTouched] = useState(false)
 
   const router = useRouter()
@@ -36,8 +38,7 @@ export default function SkillLevel() {
     setTouched(true)
 
     if (selectedLevel) {
-      /* TODO: save skill level in store */
-      console.log('level', selectedLevel)
+      setLevel(selectedLevel)
       router.push('/challenge-preference')
     }
   }
